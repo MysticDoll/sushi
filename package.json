@@ -1,0 +1,28 @@
+{
+  "name": "spin sushi",
+  "version": "0.0.0",
+  "description": "寿司",
+  "main": "index.js",
+  "scripts": {
+    "sushi": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MysticDoll/sushi.git"
+  },
+  "keywords": [
+    "daibutsu"
+  ],
+  "author": "MysticDoll",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MysticDoll/sushi/issues"
+  },
+  "homepage": "https://github.com/MysticDoll/sushi",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-open": "^1.0.0",
+    "http": "0.0.0",
+    "url": "^0.11.0"
+  }
+}

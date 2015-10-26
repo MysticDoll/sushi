@@ -20,11 +20,6 @@
       position:relative;
     }
 
-    .marquee iframe:after {
-      content:"";
-      white-space:nowrap;
-    }
-    
     .marquee iframe {
       margin:0;
       padding: 0 0 0 100%;
@@ -83,11 +78,6 @@
       position:relative;
     }
 
-    .marqueeR iframe:after {
-      content:"";
-      white-space:nowrap;
-    }
-    
     .marqueeR iframe {
       margin:0;
       padding: 0 0 0 100%;
@@ -146,11 +136,6 @@
       position:relative;
     }
 
-    .marqueeD iframe:after {
-      content:"";
-      white-space:nowrap;
-    }
-    
     .marqueeD iframe {
       margin:0;
       white-space:nowrap;
@@ -206,11 +191,6 @@
     .marqueeU {
       overflow:hidden;
       position:relative;
-    }
-
-    .marqueeU iframe:after {
-      content:"";
-      white-space:nowrap;
     }
     
     .marqueeU iframe {
@@ -269,14 +249,8 @@
       overflow:hidden;
       position:relative;
     }
-
-    .rotate iframe:after {
-      content:"";
-      white-space:nowrap;
-    }
     
     .rotate iframe {
-      margin:0;
       white-space:nowrap;
       	-webkit-animation-name:rotate;
       	-webkit-animation-timing-function:linear;
@@ -301,28 +275,28 @@
     }
 
     @-webkit-keyframes rotate {
-      from   { -webkit-transform: rotate(0deg);}
-      99%,to { -webkit-transform: rotate(360deg);}
+      0%   { -webkit-transform: rotate(0deg);}
+      100% { -webkit-transform: rotate(360deg);}
     }
 
     @-moz-keyframes rotate {
-      from   { -moz-transform: rotate(0deg);}
-      99%,to { -moz-transform: rotate(360deg);}
+      0%   { -moz-transform: rotate(0deg);}
+      100% { -moz-transform: rotate(360deg);}
     }
 
     @-ms-keyframes rotate {
-      from   { -ms-transform: rotate(0deg);}
-      99%,to { -ms-transform: rotate(360deg);}
+      0%   { -ms-transform: rotate(0deg);}
+      100% { -ms-transform: rotate(360deg);}
     }
 
     @-o-keyframes rotate {
-      from   { -o-transform: rotate(0deg);}
-      99%,to { -o-transform: rotate(360deg);}
+      0%   { -o-transform: rotate(0deg);}
+      100% { -o-transform: rotate(360deg);}
     }
 
     @keyframes rotate {
-      from   { transform: rotate(0deg);}
-      99%,to { transform: rotate(360deg);}
+      0%   { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
     }
   </style>
   
@@ -360,6 +334,7 @@
       var s = e.target || e.srcElement;
       var elm = document.getElementById('sushi-container');
       elm.className = 'marquee' + s.value;
+      if(s.value === "rotate") elm.className = s.value;
       elm.addEventListener("click",function(){
         this.classList.toggle("pause");
       });

@@ -22,7 +22,6 @@
 
     .marquee iframe {
       margin:0;
-      padding: 0 0 0 100%;
       white-space:nowrap;
       	-webkit-animation-name:marquee;
       	-webkit-animation-timing-function:linear;
@@ -47,27 +46,27 @@
     }
 
     @-webkit-keyframes marquee {
-      from   { -webkit-transform: translate(0%);}
+      from   { -webkit-transform: translate(100%);}
       99%,to { -webkit-transform: translate(-100%);}
     }
 
     @-moz-keyframes marquee {
-      from   { -moz-transform: translate(0%);}
+      from   { -moz-transform: translate(100%);}
       99%,to { -moz-transform: translate(-100%);}
     }
 
     @-ms-keyframes marquee {
-      from   { -ms-transform: translate(0%);}
+      from   { -ms-transform: translate(100%);}
       99%,to { -ms-transform: translate(-100%);}
     }
 
     @-o-keyframes marquee {
-      from   { -o-transform: translate(0%);}
+      from   { -o-transform: translate(100%);}
       99%,to { -o-transform: translate(-100%);}
     }
 
     @keyframes marquee {
-      from   { transform: translate(0%);}
+      from   { transform: translate(100%);}
       99%,to { transform: translate(-100%);}
     }
     /*
@@ -80,7 +79,6 @@
 
     .marqueeR iframe {
       margin:0;
-      padding: 0 0 0 100%;
       white-space:nowrap;
       	-webkit-animation-name:marqueeR;
       	-webkit-animation-timing-function:linear;
@@ -106,27 +104,27 @@
 
     @-webkit-keyframes marqueeR {
       from   { -webkit-transform: translate(-100%);}
-      99%,to { -webkit-transform: translate(0%);}
+      99%,to { -webkit-transform: translate(100%);}
     }
 
     @-moz-keyframes marqueeR {
       from   { -moz-transform: translate(-100%);}
-      99%,to { -moz-transform: translate(0%);}
+      99%,to { -moz-transform: translate(100%);}
     }
 
     @-ms-keyframes marqueeR {
       from   { -ms-transform: translate(-100%);}
-      99%,to { -ms-transform: translate(0%);}
+      99%,to { -ms-transform: translate(100%);}
     }
 
     @-o-keyframes marqueeR {
       from   { -o-transform: translate(-100%);}
-      99%,to { -o-transform: translate(0%);}
+      99%,to { -o-transform: translate(100%);}
     }
 
     @keyframes marqueeR {
       from   { transform: translate(-100%);}
-      99%,to { transform: translate(0%);}
+      99%,to { transform: translate(100%);}
     }
     /*
       marqueeD
@@ -325,19 +323,18 @@
       iframe.style.width = "100%";
       iframe.style.height = "100%";
       elm.appendChild(iframe);
-      iframe.contentWindow.addEventListener("click", function(){
-        this.parent.document.getElementsByTagName("iframe")[0].classList.toggle("pause");
-        this.parent.focus();
-      });
+      if(!/iPhone|iPod|Mobile|Android/.test(navigator.userAgent)){
+        iframe.contentWindow.addEventListener("click", function(){
+          this.parent.document.getElementsByTagName("iframe")[0].classList.toggle("pause");
+          this.parent.focus();
+        });
+      }
     }
     document.getElementById("vector").onchange = function(e){
       var s = e.target || e.srcElement;
       var elm = document.getElementById('sushi-container');
       elm.className = 'marquee' + s.value;
       if(s.value === "rotate") elm.className = s.value;
-      elm.addEventListener("click",function(){
-        this.classList.toggle("pause");
-      });
       refrashSushi();
     }
     document.onkeydown = function(e){
@@ -378,12 +375,18 @@
         }
       }
     }
-    document.getElementsByTagName("iframe")[0].contentWindow.addEventListener("click", function(){
-      this.parent.document.getElementsByTagName("iframe")[0].classList.toggle("pause");
-      this.parent.focus();
-    });
-    document.getElementById("sushi-container").addEventListener("click", function(){
-      this.getElementsByTagName("iframe")[0].classList.toggle("pause");
-    });
+    if(/iPhone|iPod|Mobile|Android/.test(navigator.userAgent)){
+      window.ontouchstart = function(){
+        document.getElementsByTagName("iframe")[0].classList.toggle("pause");
+      };
+    } else {
+      document.getElementById("sushi-container").addEventListener("click", function(){
+        this.getElementsByTagName("iframe")[0].classList.toggle("pause");
+      });
+      document.getElementsByTagName("iframe")[0].contentWindow.addEventListener("click", function(){
+        this.parent.document.getElementsByTagName("iframe")[0].classList.toggle("pause");
+        this.parent.focus();
+      });
+    }
   </script>
 </body>

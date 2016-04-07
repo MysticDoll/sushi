@@ -336,6 +336,25 @@
       var elm = document.getElementById('sushi-container');
       elm.className = 'marquee' + s.value;
       if(s.value === "rotate") elm.className = s.value;
+      switch(s.value) {
+        case "":
+          location.hash = "Left";
+          break;
+        case "R":
+          location.hash = "Right";
+          break;
+        case "U":
+          location.hash = "Up";
+          break;
+        case "D":
+          location.hash = "Down";
+          break;
+        case "rotate":
+          location.hash = "Spin";
+          break;
+        default:
+          break;
+      }
       refrashSushi();
     }
     document.onkeydown = function(e){
@@ -347,25 +366,30 @@
             elm.className = "marquee";
             refrashSushi();
             document.getElementById('vector').value = "";
+            location.hash = "Left";
             break;
           case 38:
             elm.className = "marqueeU";
             document.getElementById('vector').value = "U";
+            location.hash = "Up";
             refrashSushi();
             break;
           case 39:
             elm.className = "marqueeR";
             document.getElementById('vector').value = "R";
+            location.hash = "Right";
             refrashSushi();
             break;
           case 40:
             elm.className = "marqueeD";
             document.getElementById('vector').value = "D";
             refrashSushi();
+            location.hash = "Down";
             break;
           case 32:
             elm.className = "rotate";
             document.getElementById('vector').value = "rotate";
+            location.hash = "Spin";
             refrashSushi();
             break;
           case 13:

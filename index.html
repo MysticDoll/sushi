@@ -396,22 +396,23 @@
       switch(v) {
         case "Right":
           vec.value = v[0];
-          sushiChange();
+          sushiChange({target: v});
           break;
         case "Left":
           vec.value = v[0];
-          sushiChange();
+          sushiChange({target: b});
           break;
         case "Up":
           vec.value = v[0];
-          sushiChange();
+          sushiChange{target: b}();
           break;
         case "Down":
           vec.value = v[0];
-          sushiChange();
+          sushiChange{target: b}();
           break;
         case "Spin":
           vec.value = "rotate";
+          sushiChange{target: b}();
           break;
         default:
           break;

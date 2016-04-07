@@ -331,7 +331,7 @@
         });
       }
     }
-    document.getElementById("vector").onchange = function(e){
+    var sushiChange = document.getElementById("vector").onchange = function(e){
       var s = e.target || e.srcElement;
       var elm = document.getElementById('sushi-container');
       elm.className = 'marquee' + s.value;
@@ -389,5 +389,33 @@
         this.parent.focus();
       });
     }
+
+    window.addEventListener("DOMContentLoaded", function() {
+      var v = location.hash.substring(1);
+      var vec = document.getElementById("vector");
+      switch(v) {
+        case "Right":
+          vec.value = v[0];
+          sushiChange();
+          break;
+        case "Left":
+          vec.value = v[0];
+          sushiChange();
+          break;
+        case "Up":
+          vec.value = v[0];
+          sushiChange();
+          break;
+        case "Down":
+          vec.value = v[0];
+          sushiChange();
+          break;
+        case "Spin":
+          vec.value = "rotate";
+          break;
+        case default:
+          break;
+      }
+    });
   </script>
 </body>
